@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 
-const Navbar = () => {
+const  Navbar = () => {
 
   const { isSeller, router } = useAppContext();
 
@@ -39,7 +39,7 @@ const Navbar = () => {
         <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
         <button className="flex items-center gap-2 hover:text-gray-900 transition">
           <Image src={assets.user_icon} alt="user icon" />
-          Account
+          
         </button>
       </ul>
 

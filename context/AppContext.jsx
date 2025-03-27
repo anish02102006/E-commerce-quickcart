@@ -2,6 +2,8 @@
 import { productsDummyData, userDummyData } from "@/assets/assets";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import toast from "react-hot-toast";
 
 export const AppContext = createContext();
 
@@ -13,7 +15,7 @@ export const AppContextProvider = (props) => {
 
     const currency = process.env.NEXT_PUBLIC_CURRENCY
     const router = useRouter()
-
+    const { user } = useUser()
     const [products, setProducts] = useState([])
     const [userData, setUserData] = useState(false)
     const [isSeller, setIsSeller] = useState(true)
@@ -32,10 +34,12 @@ export const AppContextProvider = (props) => {
         let cartData = structuredClone(cartItems);
         if (cartData[itemId]) {
             cartData[itemId] += 1;
+            
         }
         else {
             cartData[itemId] = 1;
         }
+        toast.success(`Item Has been added to cart`);
         setCartItems(cartData);
 
     }
@@ -82,6 +86,7 @@ export const AppContextProvider = (props) => {
     }, [])
 
     const value = {
+        user,
         currency, router,
         isSeller, setIsSeller,
         userData, fetchUserData,

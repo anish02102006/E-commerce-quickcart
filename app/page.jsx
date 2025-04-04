@@ -7,6 +7,7 @@ import ContactUs from "@/components/ContactUs";
 import FeaturedProduct from "@/components/FeaturedProduct";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NGORegister from "@/components/NgoRegister";
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
         <HomeProducts />
         <FeaturedProduct />
         <Banner />
+        <NGORegister/>
         <ContactUs />
         <NewsLetter />
       </div>

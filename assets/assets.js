@@ -153,7 +153,7 @@ export const productsDummyData = [
     "image": [
       "https://stores.maxfashion.in/max-qrs-retail-pvt-ltd-shopping-centre-mulund-mumbai-105534/ProductDetails/1000008928042",
     ],
-    "category": "Earphone",
+    "category": "Clothing",
     "date": 1738667236865,
     "__v": 0
   },
@@ -165,9 +165,9 @@ export const productsDummyData = [
     "timeleft" : "1 Day",
     "offerPrice": 329.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/m16coelz8ivkk9f0nwrz.webp"
+      ""
     ],
-    "category": "Headphone",
+    "category": "Books",
     "date": 1738667310300,
     "__v": 0
   },
@@ -179,9 +179,9 @@ export const productsDummyData = [
     "timeleft" : "2 Days",
     "offerPrice": 199.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/xjd4eprpwqs7odbera1w.webp"
+      ""
     ],
-    "category": "Smartphone",
+    "category": "Kitchen",
     "date": 1738667366224,
     "__v": 0
   },
@@ -193,9 +193,9 @@ export const productsDummyData = [
     "timeeft": "3 Days",
     "offerPrice": 349.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/hdfi4u3fmprazpnrnaga.webp"
+      ""
     ],
-    "category": "Earphone",
+    "category": "Accessories",
     "date": 1738667417511,
     "__v": 0
   },
@@ -207,7 +207,7 @@ export const productsDummyData = [
     "timeleft": "21 hrs",
     "offerPrice": 49.00,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/dd3l13vfoartrgbvkkh5.webp"
+      ""
     ],
     "category": "Accessories",
     "date": 1738667503075,
@@ -221,9 +221,9 @@ export const productsDummyData = [
     "timeleft": "1 Day",
     "offerPrice": 39.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/r5h370zuujvrw461c6wy.webp"
+      ""
     ],
-    "category": "Camera",
+    "category": "Gardening",
     "date": 1738667788883,
     "__v": 0
   },
@@ -235,9 +235,9 @@ export const productsDummyData = [
     "timeleft": "5 days",
     "offerPrice": 299.00,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/rzri7kytphxalrm9rubd.webp"
+      ""
     ],
-    "category": "Laptop",
+    "category": "Tools",
     "date": 1738667977644,
     "__v": 0
   },
@@ -249,23 +249,23 @@ export const productsDummyData = [
     "timeleft": "2 Days",
     "offerPrice": 299.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/e3zjaupyumdkladmytke.webp"
+      ""
     ],
-    "category": "Earphone",
+    "category": "Lunch Boxes",
     "date": 1738668086331,
     "__v": 0
   },
   {
     "_id": "67a1f85e3f34a77b6dde915e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Footwear Shoes",
+    "name": "Outdoor Shoes",
     "description": "lorem episum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
     "timeleft": "3 Days",
     "offerPrice": 99.00,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/qqdcly8a8vkyciy9g0bw.webp"
+      ""
     ],
-    "category": "Accessories",
+    "category": "Footwear",
     "date": 1738668126660,
     "__v": 0
   },
@@ -277,9 +277,9 @@ export const productsDummyData = [
     "timeleft": "21 days",
     "offerPrice": 199.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/wig1urqgnkeyp4t2rtso.webp"
+      ""
     ],
-    "category": "Laptop",
+    "category": "Lighting",
     "date": 1738668619198,
     "__v": 0
   }

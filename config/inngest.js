@@ -4,7 +4,7 @@ import { connect } from "mongoose";
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
 
-export const syncUserCreation = inngest.createFunctin (
+export const syncUserCreation = inngest.createFunction (
     {
         id:'sync-user-from-clerk'
     },

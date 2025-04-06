@@ -16,9 +16,9 @@ async function connectDB() {
       bufferCommands: false,
     };
 
-    const mongoUrl = process.env.MONGODB_URL;
+    const mongoUrl = process.env.MONGODB_URI;
     if (!mongoUrl) {
-      throw new Error('MONGODB_URL environment variable is not defined');
+      throw new Error('MONGODB_URI environment variable is not defined');
     }
 
     // Ensure the URL starts with the correct protocol

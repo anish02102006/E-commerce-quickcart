@@ -16,9 +16,19 @@ async function connectDB() {
       bufferCommands: false,
     };
 
+    const mongoUrl = process.env.MONGODB_URL;
+    if (!mongoUrl) {
+      throw new Error('MONGODB_URL environment variable is not defined');
+    }
+
+    // Ensure the URL starts with the correct protocol
+    const connectionString = mongoUrl.startsWith('mongodb://') || mongoUrl.startsWith('mongodb+srv://') 
+      ? mongoUrl 
+      : `mongodb://${mongoUrl}`;
+
     cached.promise = mongoose
-      .connect(`${process.env.MONGODB_URL}/quickcart`, opts)
-      .then((mongoose) => mongoose); 
+      .connect(`${connectionString}/quickcart`, opts)
+      .then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;

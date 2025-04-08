@@ -14,14 +14,26 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
     };
 
-    cached.promise = mongoose
-      .connect(`${process.env.MONGODB_URI}/quickcart`, opts)
-      .then((mongoose) => mongoose);
+    try {
+      cached.promise = mongoose.connect(process.env.MONGODB_URI, opts);
+      console.log('MongoDB connected successfully');
+    } catch (error) {
+      console.error('MongoDB connection error:', error);
+      throw error;
+    }
   }
 
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (error) {
+    cached.promise = null;
+    throw error;
+  }
+
   return cached.conn;
 }
 

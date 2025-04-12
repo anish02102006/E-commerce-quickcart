@@ -3,7 +3,7 @@ import {
   syncUserCreation,
   syncUserUpdation,
   syncUserDeletion,
-} from "@Config/inngest";
+} from "../../../../Config/inngest";
 
 import { serve } from "inngest/next";
 

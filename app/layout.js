@@ -1,7 +1,9 @@
-import { Outfit } from "next/font/google";
-import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs';
+
 import { AppContextProvider } from "@/context/AppContext";
+import { Outfit } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import "./globals.css";
 
 const outfit = Outfit({ subsets: ['latin'], weight: ["300", "400", "500"] })
 
@@ -12,6 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
       <html lang="en">
         <body className={`${outfit.className} antialiased text-gray-700`} >
           <Toaster />
@@ -20,5 +23,6 @@ export default function RootLayout({ children }) {
           </AppContextProvider>
         </body>
       </html>
+      </ClerkProvider>
   );
 }

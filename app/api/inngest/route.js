@@ -2,7 +2,7 @@ import {
   inngest,
   syncUserCreation,
   syncUserUpdation,
-  syncUserDeletion,a
+  syncUserDeletion,
 } from "@config/inngest";
 import { serve } from "inngest/next";
 

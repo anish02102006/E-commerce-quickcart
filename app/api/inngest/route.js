@@ -3,7 +3,8 @@ import {
   syncUserCreation,
   syncUserUpdation,
   syncUserDeletion,
-} from "@config/inngest";
+} from "../../../Config/inngest";
+
 import { serve } from "inngest/next";
 
 // Create an API that serves zero functions

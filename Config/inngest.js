@@ -3,7 +3,7 @@ import connectDB from "./db";
 import User from "@/models/User";
 
 export const inngest = new Inngest({ id: "quick-cart" });
-
+ 
 
 // ingest function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
@@ -52,7 +52,8 @@ export const syncUserDeletion = inngest.createFunction(
     async ({event}) => {
        const {id}=event.data
        
-       await connectionDB()
+         await connectDB();
+
        await User.findByIdAndDelete(id)
     }
 )

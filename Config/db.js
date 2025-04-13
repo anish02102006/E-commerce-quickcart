@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 let cached = global.mongoose;
 
@@ -7,20 +10,17 @@ if (!cached) {
 }
 
 async function connectDB() {
-  if (cached.conn) {
-    return cached.conn;
-  }
+  if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
     };
 
+    // Use URI from env
     cached.promise = mongoose
-      .connect(`${process.env.MONGODB_URI}/newproject`, opts)
-      .then((mongoose) => {
-        return mongoose;
-      });
+      .connect(process.env.MONGODB_URI, opts)
+      .then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;

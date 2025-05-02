@@ -1,4 +1,3 @@
-import { clerkClient } from "@clerk/nextjs/dist/types/server";
 import { Inngest } from "inngest";
 import connectDB from "./db";
 import User from "@/models/user";

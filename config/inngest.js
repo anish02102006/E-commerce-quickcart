@@ -1,4 +1,4 @@
-import { clerkClient } from "@clerk/nextjs/server";
+import { clerkClient } from "@clerk/clerk-sdk-node";
 import { Inngest } from "inngest";
 import connectDB from "./db";
 import User from "@/models/user";

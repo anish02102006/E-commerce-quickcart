@@ -1,0 +1,15 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/api/inngest/route": "/api/inngest",
+  "/all-products/page": "/all-products",
+  "/add-address/page": "/add-address",
+  "/cart/page": "/cart",
+  "/my-orders/page": "/my-orders",
+  "/order-placed/page": "/order-placed",
+  "/page": "/",
+  "/product/[id]/page": "/product/[id]",
+  "/seller/orders/page": "/seller/orders",
+  "/seller/page": "/seller",
+  "/seller/product-list/page": "/seller/product-list"
+}

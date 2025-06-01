@@ -1,10 +1,11 @@
-"use client";
 import Product from "@/models/Product";
 import { getAuth } from "@clerk/nextjs/server";
 import { v2 as cloudinary } from "cloudinary";
 import { NextResponse } from "next/server";
 import authSeller from "@/lib/authSeller";
+import connectDB from "@/config/db";
 
+//configure the cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -32,6 +33,7 @@ export async function POST(request) {
         message: "No files uploaded",
       });
     }
+
     const result = await Promise.all(
       files.map(async (file) => {
         const arrayBuffer = await file.arrayBuffer();
@@ -41,27 +43,26 @@ export async function POST(request) {
           const stream = cloudinary.uploader.upload_stream(
             { resource_type: "auto" },
             (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(result);
-              }
+              if (error) reject(error);
+              else resolve(result);
             }
           );
           stream.end(buffer);
         });
       })
     );
+
     const image = result.map((result) => result.secure_url);
+    await connectDB();
     const newProduct = await Product.create({
       userId,
       name,
       description,
-      category,
       price: Number(price),
       offerPrice: Number(offerPrice),
       image,
       date: Date.now(),
+      category: category, //added by me
     });
     return NextResponse.json({
       success: true,

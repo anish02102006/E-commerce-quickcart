@@ -8,8 +8,9 @@ import { useClerk, useUser, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const { isSeller, router } = useAppContext();
-  const { signOut, openSignIn } = useClerk();
-  const { isSignedIn, user } = useUser(); // fetch user info
+  const { openSignIn } = useClerk();
+  const { isSignedIn } = useUser();
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -22,7 +23,7 @@ const Navbar = () => {
         alt="logo"
       />
 
-      {/* Center nav links */}
+      {/* Center Links */}
       <div className="hidden md:flex items-center gap-6">
         <Link href="/" className="hover:text-gray-900">Home</Link>
         <Link href="/all-products" className="hover:text-gray-900">Shop</Link>
@@ -38,7 +39,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Right-side user/account section */}
+      {/* Right Section */}
       <div className="flex items-center gap-4 relative">
         <Image className="w-4 h-4 hidden md:block" src={assets.search_icon} alt="search" />
 
@@ -54,58 +55,23 @@ const Navbar = () => {
           <div className="relative">
             <div onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer">
               <UserButton
-                appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }}
-                showUserProfile={false}
-                showSignOutButton={false}
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-10 h-10",
+                  },
+                }}
               />
             </div>
-
             {menuOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-white border rounded shadow-md z-50 p-4 text-sm">
-                {/* ✅ User info section */}
-                <div className="mb-2 border-b pb-2">
-                  <p className="font-semibold">{user?.fullName || "User Name"}</p>
-                  <p className="text-gray-500 text-xs">{user?.primaryEmailAddress?.emailAddress}</p>
-                </div>
-
-                {/* ✅ Menu items */}
-                {isSeller && (
-                  <button
-                    onClick={() => {
-                      setMenuOpen(false);
-                      router.push("/seller");
-                    }}
-                    className="block w-full text-left px-2 py-1 hover:bg-gray-100"
-                  >
-                    Manage Account
-                  </button>
-                )}
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    router.push("/");
-                  }}
-                  className="block w-full text-left px-2 py-1 hover:bg-gray-100"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    router.push("/all-products");
-                  }}
-                  className="block w-full text-left px-2 py-1 hover:bg-gray-100"
-                >
-                  Products
-                </button>
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md z-50">
                 <button
                   onClick={() => {
                     setMenuOpen(false);
                     router.push("/cart");
                   }}
-                  className="block w-full text-left px-2 py-1 hover:bg-gray-100"
+                  className="flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100"
                 >
-                  <CartIcon className="inline w-4 h-4 mr-1" />
+                  <CartIcon className="w-4 h-4" />
                   Cart
                 </button>
                 <button
@@ -113,19 +79,10 @@ const Navbar = () => {
                     setMenuOpen(false);
                     router.push("/my-orders");
                   }}
-                  className="block w-full text-left px-2 py-1 hover:bg-gray-100"
+                  className="flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100"
                 >
-                  <BagIcon className="inline w-4 h-4 mr-1" />
+                  <BagIcon className="w-4 h-4" />
                   My Orders
-                </button>
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    signOut();
-                  }}
-                  className="block w-full text-left px-2 py-1 mt-1 text-red-600 hover:bg-gray-100"
-                >
-                  Sign Out
                 </button>
               </div>
             )}

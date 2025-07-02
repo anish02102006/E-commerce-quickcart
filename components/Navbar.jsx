@@ -1,16 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { assets, BagIcon, CartIcon } from "@/assets/assets";
+import { assets } from "@/assets/assets";
 import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
-import { useClerk, useUser, UserButton } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/nextjs";
 
 const Navbar = () => {
   const { isSeller, router } = useAppContext();
-  const { openSignIn } = useClerk();
-  const { isSignedIn } = useUser();
-
+  const { signOut, openSignIn } = useClerk();
+  const { isSignedIn, user } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -29,6 +28,8 @@ const Navbar = () => {
         <Link href="/all-products" className="hover:text-gray-900">Shop</Link>
         <Link href="/about" className="hover:text-gray-900">About Us</Link>
         <Link href="/contact" className="hover:text-gray-900">Contact</Link>
+        <Link href="/privacy-policy" className="hover:text-gray-900">Privacy Policy</Link>
+
         {isSeller && (
           <button
             onClick={() => router.push("/seller")}
@@ -53,37 +54,83 @@ const Navbar = () => {
           </button>
         ) : (
           <div className="relative">
-            <div onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer">
-              <UserButton
-                appearance={{
-                  elements: {
-                    userButtonAvatarBox: "w-10 h-10",
-                  },
-                }}
-              />
-            </div>
+            <img
+              onClick={() => setMenuOpen(!menuOpen)}
+              src={user?.imageUrl}
+              alt="profile"
+              className="w-10 h-10 rounded-full cursor-pointer"
+            />
+
             {menuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md z-50">
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    router.push("/cart");
-                  }}
-                  className="flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100"
-                >
-                  <CartIcon className="w-4 h-4" />
-                  Cart
-                </button>
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    router.push("/my-orders");
-                  }}
-                  className="flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100"
-                >
-                  <BagIcon className="w-4 h-4" />
-                  My Orders
-                </button>
+              <div className="absolute right-0 mt-2 w-64 bg-white border rounded shadow-md z-50 text-sm">
+                <div className="px-4 py-2 border-b">
+                  <p className="font-semibold">👤 {user?.fullName}</p>
+                  <p className="text-gray-500 text-xs">📧 {user?.primaryEmailAddress?.emailAddress}</p>
+                </div>
+
+                <div className="flex flex-col px-4 py-2">
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      router.push("/");
+                    }}
+                    className="py-1 text-left hover:bg-gray-100"
+                  >
+                    🏠 Home
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      router.push("/all-products");
+                    }}
+                    className="py-1 text-left hover:bg-gray-100"
+                  >
+                    🛍️ Products
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      router.push("/cart");
+                    }}
+                    className="py-1 text-left hover:bg-gray-100"
+                  >
+                    🛒 Cart
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      router.push("/my-orders");
+                    }}
+                    className="py-1 text-left hover:bg-gray-100"
+                  >
+                    📦 My Orders
+                  </button>
+
+                  {isSeller && (
+                    <button
+                      onClick={() => {
+                        setMenuOpen(false);
+                        router.push("/seller");
+                      }}
+                      className="py-1 text-left hover:bg-gray-100"
+                    >
+                      🧑‍💼 Seller Dashboard
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      signOut();
+                    }}
+                    className="py-1 text-left text-red-600 hover:bg-gray-100"
+                  >
+                    🚪 Sign Out
+                  </button>
+                </div>
               </div>
             )}
           </div>

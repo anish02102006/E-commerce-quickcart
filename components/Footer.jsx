@@ -34,20 +34,42 @@ const Footer = () => {
         <div className="md:w-1/3">
           <h2 className="font-semibold text-gray-900 mb-5">Contact Us</h2>
           <div className="text-sm space-y-2 text-gray-500">
-            <p className="flex items-center gap-2">
+            <a
+              href="mailto:razeshjha0@gmail.com"
+              className="flex items-center gap-2 hover:text-blue-600 transition"
+            >
               <FaEnvelope /> razeshjha0@gmail.com
-            </p>
-            <p className="flex items-center gap-2">
+            </a>
+            <a
+              href="tel:+9779807669785"
+              className="flex items-center gap-2 hover:text-blue-600 transition"
+            >
               📞 +977 9807669785
-            </p>
+            </a>
+
             <div className="flex items-center gap-4 mt-3 text-lg">
-              <a href="https://github.com/razeshjha" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a
+                href="https://github.com/razeshZha"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
                 <FaGithub className="hover:text-black transition" />
               </a>
-              <a href="https://wa.me/9779807669785" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <a
+                href="https://wa.me/9779807669785"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
                 <FaWhatsapp className="hover:text-green-600 transition" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
                 <FaFacebookF className="hover:text-blue-600 transition" />
               </a>
             </div>

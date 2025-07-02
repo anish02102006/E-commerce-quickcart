@@ -28,8 +28,6 @@ const Navbar = () => {
         <Link href="/all-products" className="hover:text-gray-900">Shop</Link>
         <Link href="/about" className="hover:text-gray-900">About Us</Link>
         <Link href="/contact" className="hover:text-gray-900">Contact</Link>
-        <Link href="/privacy-policy" className="hover:text-gray-900">Privacy Policy</Link>
-
         {isSeller && (
           <button
             onClick={() => router.push("/seller")}

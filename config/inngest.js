@@ -1,5 +1,5 @@
 
-imaport { Inngest } from "inngest";
+import { Inngest } from "inngest";
 import connectDb from "./db";
 import user from "./models/user";
 

@@ -1,4 +1,7 @@
-import mongoose from "mongoos";
+// import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import { inngest } from './inngest';
+
 
 let cached = global.mongoose
 
@@ -29,3 +32,10 @@ async function connectDb () {
 
 
 export default connectDb
+// innest function to save user data to a database 
+
+export const syncUserCreation = inngest.createFunction(
+
+    { id: "sync-user-from-clerk" },
+    { event: "clerk/user.created" },
+    async({ event }));

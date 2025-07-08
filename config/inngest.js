@@ -28,6 +28,7 @@ export const idnngest = new Inngest({ id: "quickcart-next" });
 
 
 // inngets function to update user data in database 
+
 export const syncUserUpdation = inngest.createFunction(
     { id: 'update-user-from-clark'},
     { Event: 'clerk/user.updated'},

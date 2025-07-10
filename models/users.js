@@ -14,3 +14,13 @@ const userSchema = new mongoose.userschema({
 const user =  mongoose.models.user || mongoose.model ('user',userSchema)
 
 export default user
+// import mongoose from 'mongoose';
+
+// const userSchema = new mongoose.Schema({
+//   _id: String,
+//   email: String,
+//   name: String,
+//   imageUrl: String,
+// });
+
+// export default mongoose.models.User || mongoose.model("User", userSchema);

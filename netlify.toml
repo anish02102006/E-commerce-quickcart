@@ -1,0 +1,6 @@
+[[plugins]]
+package = "netlify-plugin-inngest"
+
+  [plugins.inputs]
+    host = "https://my-specific-domain.com"
+    path = "/api/inngest"

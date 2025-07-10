@@ -16,9 +16,13 @@ const AllProducts = () => {
                     <p className="text-2xl font-medium">All products</p>
                     <div className="w-16 h-0.5 bg-orange-600 rounded-full"></div>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 flex-col items-center gap-6 mt-12 pb-14 w-full">
-                    {products.map((product, index) => <ProductCard key={index} product={product} />)}
-                </div>
+                {Array.isArray(products) && products.length > 0 ? (
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 flex-col items-center gap-6 mt-12 pb-14 w-full">
+                        {products.map((product, index) => <ProductCard key={index} product={product} />)}
+                    </div>
+                ) : (
+                    <p className="text-gray-500 mt-6">No products available.</p>
+                )}
             </div>
             <Footer />
         </>

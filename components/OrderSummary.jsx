@@ -3,8 +3,13 @@ import { useAppContext } from "@/context/AppContext";
 import React, { useEffect, useState } from "react";
 
 const OrderSummary = () => {
-
-  const { currency, router, getCartCount, getCartAmount } = useAppContext()
+  const context = useAppContext();
+  
+  // Provide fallback values if context is not ready
+  const currency = context?.currency || '$';
+  const router = context?.router;
+  const getCartCount = context?.getCartCount || (() => 0);
+  const getCartAmount = context?.getCartAmount || (() => 0);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -67,7 +72,7 @@ const OrderSummary = () => {
                   </li>
                 ))}
                 <li
-                  onClick={() => router.push("/add-address")}
+                  onClick={() => router?.push("/add-address")}
                   className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer text-center"
                 >
                   + Add New Address

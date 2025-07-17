@@ -8,7 +8,15 @@ import { useAppContext } from "@/context/AppContext";
 
 const Cart = () => {
 
-  const { products, router, cartItems, addToCart, updateCartQuantity, getCartCount } = useAppContext();
+  const context = useAppContext();
+  
+  // Provide fallback values if context is not ready
+  const products = context?.products || [];
+  const router = context?.router;
+  const cartItems = context?.cartItems || {};
+  const addToCart = context?.addToCart || (() => {});
+  const updateCartQuantity = context?.updateCartQuantity || (() => {});
+  const getCartCount = context?.getCartCount || (() => 0);
 
   return (
     <>
@@ -102,7 +110,7 @@ const Cart = () => {
               </tbody>
             </table>
           </div>
-          <button onClick={()=> router.push('/all-products')} className="group flex items-center mt-6 gap-2 text-orange-600">
+          <button onClick={()=> router?.push('/all-products')} className="group flex items-center mt-6 gap-2 text-orange-600">
             <Image
               className="group-hover:-translate-x-1 transition"
               src={assets.arrow_right_icon_colored}

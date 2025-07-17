@@ -1,6 +1,5 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
 import ClientLayout from "@/components/ClientLayout";
 
@@ -16,11 +15,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.className} antialiased text-gray-700`} suppressHydrationWarning>
         <Toaster />
-        <AppContextProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </AppContextProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

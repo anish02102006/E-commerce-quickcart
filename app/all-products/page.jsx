@@ -6,7 +6,10 @@ import { useAppContext } from "@/context/AppContext";
 
 const AllProducts = () => {
 
-    const { products } = useAppContext();
+    const context = useAppContext();
+    
+    // Provide fallback values if context is not ready
+    const products = context?.products || [];
 
     return (
         <>

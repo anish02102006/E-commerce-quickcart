@@ -4,7 +4,7 @@ import {
   syncUserCreation,
   syncUserDeletion,
   syncUserUpdation,
-} from "../../../config/inngest";
+} from "@/components/config/inngest";
 
 // Create an API that serves zero functions
 export const { GET, POST, PUT } = serve({

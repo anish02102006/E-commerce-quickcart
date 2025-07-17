@@ -54,14 +54,14 @@ const SafeAppContextProvider = ({ children }) => {
 
   if (error) {
     console.error("Error loading AppContextProvider:", error);
-    return <div suppressHydrationWarning>{children}</div>;
+    return (
+      <AppContextProvider>
+        {children}
+      </AppContextProvider>
+    );
   }
 
-  if (!contextReady) {
-    return <div suppressHydrationWarning>{children}</div>;
-  }
-
-  // Use the dynamically imported component
+  // Always wrap with AppContextProvider, even during loading
   return (
     <AppContextProvider>
       {children}

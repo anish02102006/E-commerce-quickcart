@@ -1,15 +1,25 @@
+// components/Navbar.jsx
 "use client"
 import React from "react";
 import { assets } from "@/assets/assets";
 import Link from "next/link"
 import { useAppContext } from "@/context/AppContext";
-import { useClerk, UserButton } from "@clerk/nextjs"; // ← Import manquant
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+// Import dynamique du bouton d'authentification sans SSR
+const AuthSection = dynamic(() => import('./AuthSection'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center gap-2">
+      <Image src={assets.user_icon} alt="user icon" />
+      <span>Loading...</span>
+    </div>
+  )
+});
 
 const Navbar = () => {
-
-  const { isSeller, router, user } = useAppContext();
-  const { openSignIn } = useClerk(); // ← Utilisation correcte du hook
+  const { isSeller, router } = useAppContext();
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
@@ -33,30 +43,31 @@ const Navbar = () => {
           Contact
         </Link>
 
-        {isSeller && <button onClick={() => router.push('/seller')} className="text-xs border px-4 py-1.5 rounded-full">Seller Dashboard</button>}
-
+        {isSeller && (
+          <button 
+            onClick={() => router.push('/seller')} 
+            className="text-xs border px-4 py-1.5 rounded-full"
+          >
+            Seller Dashboard
+          </button>
+        )}
       </div>
 
-      <ul className="hidden md:flex items-center gap-4 ">
+      <ul className="hidden md:flex items-center gap-4">
         <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
-        {
-          user
-            ? <>
-            <UserButton/>
-            </>
-            : <button onClick={openSignIn} className="flex items-center gap-2 hover:text-gray-900 transition">
-              <Image src={assets.user_icon} alt="user icon" />
-              Account
-            </button>
-        }
+        <AuthSection />
       </ul>
 
       <div className="flex items-center md:hidden gap-3">
-        {isSeller && <button onClick={() => router.push('/seller')} className="text-xs border px-4 py-1.5 rounded-full">Seller Dashboard</button>}
-        <button onClick={openSignIn} className="flex items-center gap-2 hover:text-gray-900 transition">
-          <Image src={assets.user_icon} alt="user icon" />
-          Account
-        </button>
+        {isSeller && (
+          <button 
+            onClick={() => router.push('/seller')} 
+            className="text-xs border px-4 py-1.5 rounded-full"
+          >
+            Seller Dashboard
+          </button>
+        )}
+        <AuthSection />
       </div>
     </nav>
   );

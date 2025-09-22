@@ -1,4 +1,5 @@
 # QuickCart - A simple eCommerce website
+Thanks for Greatstack to make it and thankful
 
 QuickCart is an open-source **Next.js eCommerce frontend** project.  
 It provides a modern, fast and customizable shopping UI.  
